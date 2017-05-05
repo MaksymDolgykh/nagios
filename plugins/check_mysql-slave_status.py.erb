@@ -79,9 +79,9 @@ if master_status == -1:
 db.close()
 
 diff=master_status['Position'] - slave_status['Exec_Master_Log_Pos']
-msg="Master: %s, File: %s; Slave: %s, Read master file: %s; Diff: %d" % (master_ip, master_status['File'], slave_ip, slave_status['Master_Log_File'], diff)
+msg="Master: %s, File: %s; Slave: %s, Relay master file: %s; Diff: %d" % (master_ip, master_status['File'], slave_ip, slave_status['Relay_Master_Log_File'], diff)
 
-if (master_status['File'] != slave_status['Master_Log_File']):
+if (master_status['File'] != slave_status['Relay_Master_Log_File']):
   print("CRITICAL: %s" %msg)
   quit(2)
 elif (diff >= args.c):
